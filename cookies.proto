@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package cookies;
+
+message Cookie {
+  string name = 1;
+  string value = 2;
+  string domain = 3;
+}
+
+message AutomationCookies {
+  repeated Cookie cookies = 1;
+}
+
+message ProtocolCookies {
+  map<string, string> cookies = 1;
+}
