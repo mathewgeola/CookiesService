@@ -9,9 +9,11 @@ message Cookie {
 }
 
 message AutomationCookies {
-  repeated Cookie cookies = 1;
+  string key = 1;
+  repeated Cookie value = 2;
 }
 
 message ProtocolCookies {
-  map<string, string> cookies = 1;
+  string key = 1;
+  map<string, string> value = 2;
 }

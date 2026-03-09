@@ -24,21 +24,21 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rcookies.proto\x12\x07\x63ookies\"5\n\x06\x43ookie\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\"5\n\x11\x41utomationCookies\x12 \n\x07\x63ookies\x18\x01 \x03(\x0b\x32\x0f.cookies.Cookie\"y\n\x0fProtocolCookies\x12\x36\n\x07\x63ookies\x18\x01 \x03(\x0b\x32%.cookies.ProtocolCookies.CookiesEntry\x1a.\n\x0c\x43ookiesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rcookies.proto\x12\x07\x63ookies\"5\n\x06\x43ookie\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\"@\n\x11\x41utomationCookies\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1e\n\x05value\x18\x02 \x03(\x0b\x32\x0f.cookies.Cookie\"\x80\x01\n\x0fProtocolCookies\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x32\n\x05value\x18\x02 \x03(\x0b\x32#.cookies.ProtocolCookies.ValueEntry\x1a,\n\nValueEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'cookies_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_PROTOCOLCOOKIES_COOKIESENTRY']._loaded_options = None
-  _globals['_PROTOCOLCOOKIES_COOKIESENTRY']._serialized_options = b'8\001'
+  _globals['_PROTOCOLCOOKIES_VALUEENTRY']._loaded_options = None
+  _globals['_PROTOCOLCOOKIES_VALUEENTRY']._serialized_options = b'8\001'
   _globals['_COOKIE']._serialized_start=26
   _globals['_COOKIE']._serialized_end=79
   _globals['_AUTOMATIONCOOKIES']._serialized_start=81
-  _globals['_AUTOMATIONCOOKIES']._serialized_end=134
-  _globals['_PROTOCOLCOOKIES']._serialized_start=136
-  _globals['_PROTOCOLCOOKIES']._serialized_end=257
-  _globals['_PROTOCOLCOOKIES_COOKIESENTRY']._serialized_start=211
-  _globals['_PROTOCOLCOOKIES_COOKIESENTRY']._serialized_end=257
+  _globals['_AUTOMATIONCOOKIES']._serialized_end=145
+  _globals['_PROTOCOLCOOKIES']._serialized_start=148
+  _globals['_PROTOCOLCOOKIES']._serialized_end=276
+  _globals['_PROTOCOLCOOKIES_VALUEENTRY']._serialized_start=232
+  _globals['_PROTOCOLCOOKIES_VALUEENTRY']._serialized_end=276
 # @@protoc_insertion_point(module_scope)
