@@ -29,13 +29,14 @@ class Server:
             try:
                 data = await self.parse_request(request)
                 key = data["key"]
+                value = data["value"]
                 file_path = os.path.join(
                     self.SERVER_DIR,
                     "cookies",
                     key,
                     "automation_cookies.json"
                 )
-                self.common.save_json(data, file_path)
+                self.common.save_json(value, file_path)
                 return {"status": "ok"}
             except Exception:
                 traceback.print_exc()
@@ -46,13 +47,14 @@ class Server:
             try:
                 data = await self.parse_request(request)
                 key = data["key"]
+                value = data["value"]
                 file_path = os.path.join(
                     self.SERVER_DIR,
                     "cookies",
                     key,
                     "protocol_cookies.json"
                 )
-                self.common.save_json(data, file_path)
+                self.common.save_json(value, file_path)
                 return {"status": "ok"}
             except Exception:
                 traceback.print_exc()

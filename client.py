@@ -99,12 +99,14 @@ class Client:
 if __name__ == "__main__":
     client = Client()
 
+    key = "test"
+
     client.upload_automation_cookies(
-        "test",
+        key,
         "client/cookies/test/automation_cookies.json"
     )
     client.upload_protocol_cookies(
-        "test",
+        key,
         "client/cookies/test/protocol_cookies.json"
     )
 
