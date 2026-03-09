@@ -1,13 +1,13 @@
 import gzip
 import hashlib
 import hmac
+import json
 import os
 import time
 
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 from fastapi import HTTPException
-from google.protobuf.message import Message
 
 
 class Common:
@@ -35,30 +35,34 @@ class Common:
         decrypted = unpad(cipher.decrypt(data), AES.block_size)
         return gzip.decompress(decrypted)
 
-    def verify_headers(self, timestamp: str, signature: str, token: str, body: bytes) -> None:
+    def verify_headers(self, timestamp: str, signature: str, token: str, body: bytes):
         try:
             ts = int(timestamp)
-        except ValueError:
-            raise HTTPException(status_code=400, detail="Invalid timestamp")
+        except Exception:
+            raise HTTPException(400, "Invalid timestamp")
 
         hm = hmac.new(self.secret_key, body + timestamp.encode(), hashlib.sha256).hexdigest()
+
         if not hmac.compare_digest(hm, signature):
-            raise HTTPException(status_code=401, detail="Invalid signature")
+            raise HTTPException(401, "Invalid signature")
 
         if token != self.token:
-            raise HTTPException(status_code=401, detail="Invalid token")
+            raise HTTPException(401, "Invalid token")
 
         now = int(time.time())
+
         if abs(now - ts) > self.expiry_seconds:
-            raise HTTPException(status_code=400, detail="Timestamp expired")
+            raise HTTPException(400, "Timestamp expired")
 
-    def save(self, msg: Message, file_path: str) -> None:
+    def save_json(self, data: dict, file_path: str):
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        with open(file_path, "wb") as f:
-            f.write(msg.SerializeToString())
 
-    def load(self, file_path: str) -> bytes:
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+    def load_json(self, file_path: str) -> dict:
         if not os.path.exists(file_path):
-            raise HTTPException(status_code=404, detail=f"{file_path} not found")
-        with open(file_path, "rb") as f:
-            return f.read()
+            raise HTTPException(404, f"{file_path} not found")
+
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
