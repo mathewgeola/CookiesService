@@ -97,18 +97,12 @@ class Client:
 
 
 if __name__ == "__main__":
-    client = Client()
+    client = Client("127.0.0.1", 7452)
 
     key = "test"
 
-    client.upload_automation_cookies(
-        key,
-        "client/cookies/test/automation_cookies.json"
-    )
-    client.upload_protocol_cookies(
-        key,
-        "client/cookies/test/protocol_cookies.json"
-    )
+    client.upload_automation_cookies(key, "client/cookies/test/automation_cookies.json")
+    client.upload_protocol_cookies(key, "client/cookies/test/protocol_cookies.json")
 
-    print(client.download_automation_cookies("test"))
-    print(client.download_protocol_cookies("test"))
+    print(client.download_automation_cookies(key, "client/cookies/test/automation_cookies.json"))
+    print(client.download_protocol_cookies(key, "client/cookies/test/protocol_cookies.json"))
